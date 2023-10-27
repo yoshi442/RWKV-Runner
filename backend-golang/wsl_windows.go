@@ -50,7 +50,7 @@ func (a *App) WslStart() error {
 		return err
 	}
 	for _, d := range distros {
-		if strings.Contains(d.Name(), "Ubuntu") {
+		if strings.Contains(d.Name(), "RWKV") {
 			distro = &d
 			break
 		}
@@ -59,7 +59,7 @@ func (a *App) WslStart() error {
 		return errors.New("ubuntu not found")
 	}
 
-	cmd = exec.Command("wsl", "-d", distro.Name(), "-u", "root")
+	cmd = exec.Command("wsl", "-d", distro.Name())
 
 	stdin, err = cmd.StdinPipe()
 	if err != nil {
